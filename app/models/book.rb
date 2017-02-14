@@ -1,6 +1,9 @@
 class Book < ApplicationRecord
 	belongs_to :category
 	belongs_to :user
+	has_many :authors, through: :repositories
+	has_many :repositories
+
 
 
 	  has_attached_file :image,

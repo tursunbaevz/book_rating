@@ -4,12 +4,7 @@ class BooksController < ApplicationController
 	end
 
 	def index
-		#if params[:category].blank?
 		@books = Book.all.order("created_at DESC")
-			#else
-		#	 @category_id = Category.find_by(title: params[:category]).id
-		    # @book = Book.where(:category_id => @category_id).order("created_at DESC")	
-		#end
 	end
 
 	def create
@@ -47,6 +42,6 @@ class BooksController < ApplicationController
 
 
 	def params_book
-		params.require(:book).permit(:name, :description, :category_id, :user_id, :image)
+		params.require(:book).permit(:name, :description, :category_id, :user_id, :image, :author_id)
 	end
 end

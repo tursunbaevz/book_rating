@@ -29,7 +29,7 @@
             
             Hello, <%= link_to current_user.name, edit_user_registration_path(current_user), class: 'navbar-link' %>
             |
-            <%#= link_to 'Add New author', new_author_path, class: 'navbar-link' %> 
+            <%= link_to 'Add New author', new_author_path, class: 'navbar-link' %> 
             |
             <%= link_to 'Add New Book', new_book_path, class: 'navbar-link' %>
             |
