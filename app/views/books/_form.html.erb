@@ -1,0 +1,38 @@
+
+<%= form_for @book, html: { multipart: true } do |f| %>
+      <div class="container-fluid">
+        <div class="form-group text-center">
+          <%= f.label :author %>
+          <%#= f.collection_select :author_id, Author.all, :id, :name %>
+        </div>
+        
+        <div class="form-group text-center">
+          <%= f.label :category %><br />
+          <%= f.collection_select :category_id, Category.all, :id, :title %>
+
+        </div>
+        <div class="form-group text-center">
+          <%= f.text_field :name, label: 'Наименование', placeholder: 'Name', class: 'form-control'%>
+        </div>
+
+        <div class="form-group text-center">
+          <%= f.text_area :description, label: 'Описание', placeholder: 'description', class: 'form-control', size: "30x10"%>
+        </div>
+        <div class="form-group text-center">
+          <%= f.file_field :image %>
+        </div>
+
+        <div class="form-group text-center">
+          Согласны ли  вы  с  условиями
+          <%= f.check_box :terms, {checked: false} %>
+        </div>
+
+        <div class="form-group text-center">
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+        </div>
+        <div class="form-group text-center">
+          <%= f.submit class: 'btn-success btn-block' %>
+        </div>
+      </div>
+  <% end %>
+</div>
