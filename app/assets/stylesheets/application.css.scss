@@ -12,11 +12,17 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 .book{
 	height: 350px;
-	width: 450px;
+	width: 250px;
+}
+
+.book_show{
+	height: 450px;
+	width: 350px;
 }

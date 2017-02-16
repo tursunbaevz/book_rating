@@ -35,6 +35,12 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 gem 'paperclip', '~> 4.3'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'jquery-ui-rails'
+
+
 
 
 # Use Capistrano for deployment

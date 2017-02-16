@@ -5,4 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 	validates :name, presence: true, length: {maximum: 50}
 	has_many :books
+	has_many :comments
+	has_many :reviews
+
+	
+	def admin?
+		return true
+	end
+
 end

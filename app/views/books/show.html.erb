@@ -1,12 +1,6 @@
-<div class="container">
-	<h1>Name:  <%= @book.name %></h1> 
-	<h2>Category:  <%= @book.category.title %></h2> 
-	<h3><%#= @book.author.name %></h3> 
-    <%= image_tag @book.image.url(:medium) %>   
-	<p> <%= @book.description %></p> 
-
-
-	    	<%= link_to 'back', books_path(@book) %>
+<div class="row">
+	<div class="col-md-4">
+	<%= link_to 'back', books_path(@book) %>
 	<% if user_signed_in? %>
 
 		<% if @book.user_id == current_user.id %>
@@ -16,6 +10,47 @@
                	  method: :delete,
                 	 data: {confirm: 'Do you want to remove this book?'} %> 
     	<% end %>             
-    <% end %>             
+    <% end %>  
+      <%= image_tag @book.image.url(:medium), class: "book_show" %> 
+    </div>
+
+	<div class="col-md-8">
+		<h2>Name:  <%= @book.name %></h2> 
+		<h3>Category: <%= @book.category.title %></h3> 
+
+	   <% @book.authors.each do |a| %>
+		 <label>Author: <%= a.name %> </label> <br>
+	   <% end %> 
+		<%= @book.description %>
+	</div>
 
 </div>
+	<div>
+		<li> <%= link_to 'new review', new_book_review_path(@book) %> </li>		
+	</div>
+
+<div class="row">
+
+	<div class="col-md-4">
+	<%= render @book.reviews %>
+	<script>
+	$('.review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score')
+		},
+		path: '/assets/'
+	});
+	</script>	
+</div>
+
+	
+</div>
+
+
+
+
+
+
+           
+

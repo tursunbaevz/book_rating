@@ -11,6 +11,8 @@ class AuthorsController < ApplicationController
 		@author = Author.new(author_params)
 		if 
 			@author.save
+
+			redirect_to root_path
 		else
 			render 'new'
 

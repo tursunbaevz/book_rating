@@ -1,0 +1,14 @@
+<h1>Edit Review</h1>
+	<%= form_for ([@book, @review]), html: { multipart: true } do |f| %>
+	    <div class="form-group text-center">
+          <%= f.text_field :rating, label: 'rating', placeholder: 'rating', class: 'form-control'%>
+        </div>
+
+        <div class="form-group text-center">
+          <%= f.text_area :comment, label: 'comment', placeholder: 'comment', class: 'form-control'%>
+        </div>
+
+        <div class="form-group text-center">
+          <%= f.submit class: 'btn-success btn-block' %>
+        </div>
+<% end %>

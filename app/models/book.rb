@@ -3,6 +3,20 @@ class Book < ApplicationRecord
 	belongs_to :user
 	has_many :authors, through: :repositories
 	has_many :repositories
+	accepts_nested_attributes_for :authors
+  has_many :comments
+	has_many :reviews
+	accepts_nested_attributes_for :comments, allow_destroy: true
+
+
+
+
+  def authors_attributes=(author_attributes)
+    author_attributes.values.each do |author_attribute|
+      author = Author.find_or_create_by(author_attribute)
+      self.authors << author
+    end
+  end
 
 
 
