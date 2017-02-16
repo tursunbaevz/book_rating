@@ -4,9 +4,8 @@ class Book < ApplicationRecord
 	has_many :authors, through: :repositories
 	has_many :repositories
 	accepts_nested_attributes_for :authors
-  has_many :comments
 	has_many :reviews
-	accepts_nested_attributes_for :comments, allow_destroy: true
+
 
 
 
