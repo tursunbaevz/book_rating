@@ -1,51 +1,79 @@
-<div class="row">
-	<div class="col-md-4">
-	<%= link_to 'back', books_path(@book) %>
-	<% if user_signed_in? %>
+<div class="container-2">	
+	<div class="img-wrap">
+        <div class="book-image">
+		  	<div class="best-seller-show">БЕСТСЕЛЛЕР</div>
+      	 	<img class="image" src=" <%= @book.image.url(:medium) %>" alt="book" >
 
-		<% if @book.user_id == current_user.id %>
+			<div class="info">
+			<a class="edit-book" href="<%= edit_book_path %>">
+		     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+
+				Авторы:
+			    <% @book.authors.each do |a| %>
+					<div class="author">
+				 		<label> <%= a.name %> </label> <br>
+				 	</div>
+			    <% end %> 
+
+				<h4 class="category">Категория: <%= @book.category.title %></h4> 
+				<h1 class="name" style="font-size: 20px;">  <%= @book.name %></h1> 
 				
-	    	<%= link_to 'Edit', edit_book_path(@book) %>
-	    	<%= link_to 'Delete', book_path(@book),
-               	  method: :delete,
-                	 data: {confirm: 'Do you want to remove this book?'} %> 
-    	<% end %>             
-    <% end %>  
-      <%= image_tag @book.image.url(:medium), class: "book_show" %> 
-    </div>
+				<div class="button"> <%= @book.cost %> руб. </div>
 
-	<div class="col-md-8">
-		<h2>Name:  <%= @book.name %></h2> 
-		<h3>Category: <%= @book.category.title %></h3> 
-
-	   <% @book.authors.each do |a| %>
-		 <label>Author: <%= a.name %> </label> <br>
-	   <% end %> 
-		<%= @book.description %>
+				<hr style="width:100%;">
+				<h3 class="about" style="font-weight: bold;"> О чем эта книга </h3>
+				<p class="description"> <%= @book.description %> </p>
+			</div>
+		</div>
 	</div>
+	<hr style=" margin-top: 70px; " >
 
-</div>
-	<div>
-		<li> <%= link_to 'new review', new_book_review_path(@book) %> </li>		
-	</div>
 
-<div class="row">
-
-	<div class="col-md-4">
-	<%= render @book.reviews %>
-	<script>
-	$('.review-rating').raty({
-		readOnly: true,
-		score: function() {
-			return $(this).attr('data-score')
-		},
-		path: '/assets/'
-	});
-	</script>	
-</div>
+		<!-- comment section -->
 
 	
+	<div class="comment-section">
+		
+		<div class="comments">
+			<%= render @book.reviews %>	
+		</div>
+		
+
+		<hr style="width:100%;">
+
+		<div class="render-form" style="display: none;">
+			<%= render :partial => '/reviews/form', :review => @book.reviews.build %>
+		</div>
+		
+		
+		<div class="btn-js">
+			<button type="button" class="btn btn-default"> Напишите отзыв о книге </button>
+		</div>
+	</div>	
 </div>
+             
+
+	
+<script>
+
+$(document).ready(function(){  
+	$('.btn-js').click(function(){ 
+		$('.render-form').slideToggle('slow');
+	});
+
+});
+
+
+$('.review-rating').raty({
+	readOnly: true,
+	score: function() {
+		return $(this).attr('data-score')
+	},
+	path: '/assets/'
+});
+</script>	
+	
+
 
 
 

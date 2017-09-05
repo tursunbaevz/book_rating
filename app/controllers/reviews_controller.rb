@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+ class ReviewsController < ApplicationController
 	before_action :find_book
 	 before_action  :find_review, only: [:edit, :update, :destroy]
 
@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
 		
 		if @review.save
 			
-			redirect_to book_path(@book)
+			redirect_to @book, action: 'show', id: 1
 
 		else
 			render 'new'
@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
 		@review = Review.find(params[:id])	
 		if 
 			@review.update(review_params)
-			redirect_to root_url
+			redirect_to @book, action: 'show', id: 1
 			else
 			render 'edit'
 		end

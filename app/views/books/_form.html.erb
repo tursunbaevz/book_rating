@@ -1,40 +1,54 @@
-<%= form_for @book, html: { multipart: true } do |f| %>
-        <div class="container-fluid">
-          <div class="form-group text-center">
-            <select class="selectpicker" multiple name="book[author_ids][]">
-              <% Author.all.each do |a| %>
-                <option value="<%= a.id %>"><%= a.name %></option>
-              <% end %>
-             </select> 
-          </div>
-        </div>
-        <div class="form-group text-center">
-          <%= f.label :category %><br />
-          <%= f.collection_select :category_id, Category.all, :id, :title %>
-        </div>
-        
-        <div class="form-group text-center">
-          <%= f.text_field :name, label: 'Наименование', placeholder: 'Name', class: 'form-control'%>
-        </div>
+<%= bootstrap_form_for @book, html: { multipart: true } do |f| %>
 
-        <div class="form-group text-center">
-          <%= f.text_area :description, label: 'Описание', placeholder: 'description', class: 'form-control', size: "30x10"%>
-        </div>
-        <div class="form-group text-center">
-          <%= f.file_field :image %>
-        </div>
+      <div class="container">
+        <div class="book-form"> 
+            <div class="container-fluid">
+              <div class="form-group selector">
+                  <% Author.all.each do |a| %>
+                    <div class="checkbox" multiple name="book[author_ids][]">
+                    <label><input type="checkbox" value="<%= a.id %>"><%= a.name %></label>
+                  </div>
+                  <% end %>
+                </select> 
+              </div>
+            </div>
 
-        <div class="form-group text-center">
-          Согласны ли  вы  с  условиями
-          <%= f.check_box :terms, {checked: false} %>
-        </div>
+            <script>
+         
+            </script>
+            
+            <div class="form-group">
+              <%= f.collection_select :category_id, Category.all, :id, :title %>
+            </div>
 
-        <div class="form-group text-center">
-          <%= f.hidden_field :user_id, :value => current_user.id %>
+            <div class="form-group">
+              <%= f.number_field :cost %>
+            </div>
+            
+            <div class="form-group ">
+              <%= f.text_field :name, label: 'Наименование', placeholder: 'Имя книги', class: 'form-control'%>
+            </div>
+
+            <div class="form-group">
+              <%= f.text_area :description, as: :text , row: '8'%>  
+            </div>
+
+            <div class="form-group">
+              <%= f.file_field :image %>
+            </div>
+
+            <div class="form-group">
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+            </div>
+
+            <div class="form-group ">
+              <%= f.submit class: 'btn btn-success ', id: "btn-book" %>
+            </div>
         </div>
-        <div class="form-group text-center">
-          <%= f.submit class: 'btn-success btn-block' %>
-        </div>
-      </div>
+    </div>
   <% end %>
+
+  <%= link_to 'Delete', book_path, method: :delete, style: 'color: red; margin-top: -100px; margin-left: 100px; position: absolute;' %>
 </div>
+
+

@@ -1,11 +1,34 @@
-<div class="container">
-    <div class="row">
-      	
-   	   <% @books.each do |book| %>
-         <div class="col-md-4">
-      		<a href="/books/<%= book.id %>"><%= image_tag book.image.url(:medium), class: 'book' %></a>
-         </div>
-    	<% end %>
-
-    </div>
+<div class="bunner">
+	<img class="img-bunner" src="/book2.jpg" alt="image">
 </div>
+
+<div class="container">
+		<h1 class="font" id="wrapper"> Книги которые изменят вашу жизнь! </h1>
+	   <% @books.each do |book| %>
+		    <div class="col-xs-6 col-sm-3 position">
+			   		<div class="best-seller">БЕСТСЕЛЛЕР</div>
+		  			<a href="/books/<%= book.id %>">
+		  				<img class="book" src="<%= book.image.url(:medium) %> " alt="img"> 
+		  			</a>
+				    <div class="name-book">	
+				      <%= book.name  %>
+				    </div>
+		    </div>
+	<% end %>
+</div>
+
+<script>
+	$(window).load(function () {
+    var i = 0;
+    $('#wrapper').css('background-text', 'url(' + [i] + ')');
+    setInterval(function () {
+ 
+        console.log(i);
+        // transition animation: 2s
+        $('#wrapper').fadeOut(3000, function () {
+            $('#wrapper').css('background-text', 'url(' + [i] + ')').show();
+        });
+        // slide change: 3s
+    }, 3000);
+});
+</script>

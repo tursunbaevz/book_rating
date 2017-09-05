@@ -1,0 +1,71 @@
+.best-seller-show {
+	margin-left: 33px;
+	font-size: 16px;
+	border: 1px solid transparent;
+	border-radius: 4px 4px 0 0;
+	letter-spacing: .06em;
+	background-color: #fe4f19;
+	color: #ffffff;
+	height: 24px;
+	padding: 2px 8px 0;
+	white-space: nowrap;
+	position: absolute;
+	margin-top: -22px;
+	
+}
+.edit-book {
+	margin-left: 300px;
+	position: absolute !important;
+}
+
+.book-image  {
+	margin-top: 50px;
+	margin-left: 150px;
+}
+
+li {
+	list-style-type: none;
+}
+
+.description {
+	font-family: 'Sorts Mill Goudy', serif;
+	font-size: 17px;	
+}
+
+.info {
+	margin-right: 450px;
+	float: right;
+	
+}
+
+.b-stickers {
+	size: 20px;
+}
+
+.btn-js {
+	padding-bottom: 50px;
+}
+
+.comment-section {
+	padding-left: 100px;
+}
+
+#delete-btn,
+.review-comment,
+#add-comment{
+	margin-bottom: 20px;
+}
+
+
+#btn-book {
+	margin-bottom: 100px;
+}
+
+.selector{
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+
+
+

@@ -4,14 +4,15 @@ class BooksController < ApplicationController
 	end
 
 	def index
-		@books = Book.all.order("created_at DESC")
+		@books = Book.search(params[:search])
+		
 	end
 
 	def create
 		@book = current_user.books.build(params_book)
 		if 
 			@book.save
-			redirect_to root_path
+			redirect_to books_path
 		else
 			render 'new'
 		end
@@ -26,6 +27,7 @@ class BooksController < ApplicationController
 	end
 
 	def show
+		@reviews = Review.all
 		@book = Book.find(params[:id])
 	end
 
@@ -37,13 +39,11 @@ class BooksController < ApplicationController
 		@book = Book.find(params[:id])
 		@book.update(params_book)
 
-		redirect_to root_url
+		redirect_to book_path
 	end
 
 
 	def params_book
-		params.require(:book).permit(:name, :description, :category_id, :user_id, :image, author_ids: [] )
-
-		
+		params.require(:book).permit(:name, :description, :cost, :category_id, :comment, :raiting, :user_id, :image, author_ids: [] )
 	end
 end

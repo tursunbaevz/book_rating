@@ -1,14 +1,19 @@
-<%= form_for ([@book, @book.reviews.build]), html: { multipart: true } do |f| %>
-	    <div class="form-group text-center">
-          <%= f.text_field :rating, label: 'rating', placeholder: 'rating', class: 'form-control'%>
+<%= bootstrap_form_for ([@book, @book.reviews.build]), html: { multipart: true } do |f| %>
+    <form action="comment-form">
+	      <div id="raiting-field" class="form-group">
+          <%= f.number_field :rating,   placeholder: '1...5',  style: 'width: 100px;'%> 
         </div>
 
-        <div class="form-group text-center">
-          <%= f.text_area :comment, label: 'comment', placeholder: 'comment', class: 'form-control'%>
+        <div id="comment" class="comment-class">
+            <%= f.text_area :comment, as: :text , rows: "5" , style: "width: 400px;"%>  
         </div>
+        
 
-        <div class="form-group text-center">
-          <%= f.submit class: 'btn-success btn-block' %>
+        <div class="form" id="add-comment">
+          <%= f.submit class: 'btn btn-success' %>
         </div>
+    </form>
 <% end %>
-	
+	 
+
+ 

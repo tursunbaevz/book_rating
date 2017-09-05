@@ -39,6 +39,7 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'jquery-ui-rails'
+gem 'bootstrap_form'
 
 
 

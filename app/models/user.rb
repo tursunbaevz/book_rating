@@ -4,12 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 	validates :name, presence: true, length: {maximum: 50}
+
+	
+
 	has_many :books
 	has_many :reviews
 
 	
-	def admin?
-		return true
-	end
 
 end

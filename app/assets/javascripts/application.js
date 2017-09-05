@@ -11,9 +11,28 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sprockets
 //= require jquery-ui
+//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
 
+// $(document).ready(function(){
+// 	var new_comment = $('#new_comment');
+// 	$('#add-comment').click(function(){
+// 		var new_comment = $('new_comment').val();
+// 		$('.comment-class').append("<li>" + new_comment + "</li>");
+// 	});
+
+
+
+// 	// $.ajax({
+// 	// 	url: "/reviews",
+// 	// 	type: "POST",
+// 	// 	data: {review:{comment: new_comment} } ,
+// 	// 	success: function(){
+// 	// 		alert("success");
+// 	// 	}
+
+// 	// });
+// });
